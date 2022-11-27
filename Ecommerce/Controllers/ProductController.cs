@@ -2,6 +2,7 @@
 using Ecommerce.Data;
 using Ecommerce.DTOs.Product;
 using Ecommerce.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,7 @@ namespace Ecommerce.Controllers
             return NotFound("Product with the given id does not exist");
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<ProductDTO>> CreateProduct(CreateProductDTO productDto)
         {
